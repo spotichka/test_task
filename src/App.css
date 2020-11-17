@@ -1,38 +1,102 @@
-.App {
-  text-align: center;
+.container {
+  margin-left: 15px;
+  margin-right: 15px;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.employess_page {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  width: 100%;
+}
+.employes {
+  width: 65%;
+}
+.letter_block {
+  max-width: 33%;
+  margin: 15px;
+}
+.alphabet {
+  display: flex;
+  flex-wrap: wrap;
+  border-right: 1px solid black;
+}
+.employee_card {
+  display: flex;
+  justify-content: space-between;
+  width: 170px;
+}
+.employees_birth {
+  width: 35%;
+}
+h2 {
+  font-size: 26px;
+  padding-bottom: 20px;
+}
+.employee_heading {
+  margin-left: 150px;
+}
+.employees_birth__heading {
+  text-align: center;
+  border-bottom: 1px solid black;
+}
+.month_card {
+  width: 40%;
+  margin: 0 auto;
+}
+.month_name {
+  font-weight: bold;
+}
+ul {
+  padding: 0;
+  padding-left: 20px;
+}
+a {
+  font-size: 24px;
+  text-decoration: none;
   color: white;
+  display: block;
+  width: 300px;
+  margin: 30px;
+  border: 1px solid #3d4d69;
+  padding: 15px;
+  border-radius: 4px;
+  text-align: center;
+  background-color: #415a72;
+  cursor: pointer;
+}
+a::after {
+  content: "";
+  border: solid;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 5px;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+a:hover {
+  color: red;
 }
 
-.App-link {
-  color: #61dafb;
+.employess_page {
+  display: flex;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.employes {
+  width: 65%;
+}
+.employees_birth {
+  width: 35%;
+}
+.alphabet {
+  display: flex;
+  flex-wrap: wrap;
+
+  border-right: 1px solid black;
+}
+.letter_block {
+  width: 30%;
+  margin: 15px;
+}
+.eployee_card {
+  display: flex;
+  justify-content: space-between;
+  width: 170px;
 }
