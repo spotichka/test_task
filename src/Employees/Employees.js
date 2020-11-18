@@ -102,18 +102,21 @@ const EmployeeCard = ({ id, lastName, firstName, selectEmployee }) => {
   const dispatch = useDispatch();
 
   let memory;
-  if (localStorage.getItem(id) === "false") {
+
+  if (localStorage.getItem(id) === "false" || undefined) {
     memory = false;
-  } else memory = true;
+  } else if (localStorage.getItem(id) === "true") {
+    memory = true;
+  }
 
   let [checked, setChecked] = useState(memory);
 
   useEffect(() => {
     if (checked === true) {
-      localStorage.setItem(id, checked);
+      localStorage.setItem(id, "true");
       dispatch(selectEmployee(id));
     } else if (checked === false) {
-      localStorage.setItem(id, checked);
+      localStorage.setItem(id, "false");
       dispatch(unselectEmployee(id));
     }
   }, [checked]);

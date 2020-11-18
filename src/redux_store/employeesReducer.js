@@ -22,7 +22,7 @@ const employeesReducer = (state = initialState, action) => {
       return {
         ...state,
         selectedEmployees: [
-          ...state.selectedEmployees.filter((id) => id != action.id),
+          ...state.selectedEmployees.filter((id) => id !== action.id),
         ],
       };
     default:

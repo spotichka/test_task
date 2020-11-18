@@ -51,16 +51,21 @@ const EmployessBirth = ({ employees, selectedEmployees }) => {
     <div className="employees_birth">
       <h2 className="employees_birth__heading">Employees birhday</h2>
       <div>
-        {Object.keys(monthObj).map((month) => {
-          return (
-            <MonthBlock
-              monthObj={monthObj[month]}
-              month={month}
-              key={monthObj[month][0].id}
-              id={monthObj[month].id}
-            />
-          );
-        })}
+        {selectedEmployees.length === 0 ? (
+          <div className="month_card">{"No selected employees"}</div>
+        ) : (
+          Object.keys(monthObj).map((month) => {
+            return (
+              <MonthBlock
+                monthObj={monthObj[month]}
+                month={month}
+                key={monthObj[month][0].id}
+                id={monthObj[month].id}
+              />
+            );
+          })
+        )}
+        {}
       </div>
     </div>
   );
@@ -94,7 +99,7 @@ const MonthBlock = ({ monthObj, month }) => {
     let monthIndex = date.getMonth();
     let year = date.getFullYear();
 
-    return day + " " + monthNames[monthIndex] + " " + year;
+    return `${day} ${monthNames[monthIndex]} ${year}`;
   }
 
   return (
