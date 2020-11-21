@@ -109,7 +109,7 @@ const EmployeeCard = ({ id, lastName, firstName, selectEmployee }) => {
     memory = true;
   }
 
-  let [checked, setChecked] = useState(memory);
+  let [checked, setChecked] = useState(memory || false);
 
   useEffect(() => {
     if (checked === true) {

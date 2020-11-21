@@ -6,8 +6,6 @@ const instance = axios.create({
 
 export const employeesAPI = {
   getEmployees() {
-    return instance.get().then((response) => {
-      return response.data;
-    });
+    return instance.get().then((response) => response.data);
   },
 };
