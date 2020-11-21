@@ -41,14 +41,7 @@ const Employess = (props) => {
   ];
 
   function renderEmployee(letter) {
-    let letterArr = empArr.filter((item) => {
-      let firstLetter = item.lastName[0];
-      if (firstLetter === letter) {
-        return true;
-      } else {
-        return false;
-      }
-    });
+    const letterArr = empArr.filter((item) => item.lastName[0] === letter);
     if (letterArr.length === 0) {
       return <div>{"-----"}</div>;
     } else {
