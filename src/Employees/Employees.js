@@ -12,33 +12,7 @@ const Employess = (props) => {
   }, []);
   let empArr = props.employees;
 
-  let alphabet = [
-    "A",
-    "B",
-    "C",
-    "D",
-    "E",
-    "F",
-    "G",
-    "H",
-    "I",
-    "J",
-    "K",
-    "L",
-    "M",
-    "N",
-    "O",
-    "P",
-    "Q",
-    "R",
-    "S",
-    "T",
-    "U",
-    "V",
-    "W",
-    "X",
-    "Y",
-  ];
+  const alphabet = [..."ABCDEFGHIJKLMNOPQRSTUVWXYZ"];
 
   function renderEmployee(letter) {
     const letterArr = empArr.filter((item) => item.lastName[0] === letter);
