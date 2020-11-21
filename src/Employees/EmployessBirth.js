@@ -1,6 +1,21 @@
 import React from "react";
 import { connect } from "react-redux";
 
+const monthNamesArr = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
 const EmployessBirth = ({ employees, selectedEmployees }) => {
   let employeesArr = [];
 
@@ -13,30 +28,16 @@ const EmployessBirth = ({ employees, selectedEmployees }) => {
       {}
     );
 
-  function formatMonth(date) {
+  function formatMonth(date, monthNamesArr) {
     let month = new Date(date);
-    let monthNames = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
-    ];
 
     let monthIndex = month.getMonth();
 
-    return monthNames[monthIndex];
+    return monthNamesArr[monthIndex];
   }
 
   let monthObj = selectedEmployees.reduce((accObj, id) => {
-    let month = formatMonth(employeesArr[id].dob);
+    let month = formatMonth(employeesArr[id].dob, monthNamesArr);
     let employee = { ...employeesArr[id] };
 
     if (!accObj[month]) {
@@ -80,26 +81,11 @@ export default connect(mapStateToProps)(EmployessBirth);
 
 const MonthBlock = ({ monthObj, month }) => {
   function formatDate(date) {
-    let monthNames = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
-    ];
-
     let day = date.getDate();
     let monthIndex = date.getMonth();
     let year = date.getFullYear();
 
-    return `${day} ${monthNames[monthIndex]} ${year}`;
+    return `${day} ${monthNamesArr[monthIndex]} ${year}`;
   }
 
   return (
@@ -110,7 +96,10 @@ const MonthBlock = ({ monthObj, month }) => {
           return (
             <li key={monthObj[item].id}>{`${monthObj[item].lastName} ${
               monthObj[item].firstName
-            } - ${formatDate(new Date(monthObj[item].dob))}`}</li>
+            } - ${formatDate(
+              new Date(monthObj[item].dob),
+              monthNamesArr
+            )}`}</li>
           );
         })}
       </ul>
