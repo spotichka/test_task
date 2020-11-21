@@ -55,16 +55,18 @@ const EmployessBirth = ({ employees, selectedEmployees }) => {
         {selectedEmployees.length === 0 ? (
           <div className="month_card">{"No selected employees"}</div>
         ) : (
-          Object.keys(monthObj).map((month) => {
-            return (
-              <MonthBlock
-                monthObj={monthObj[month]}
-                month={month}
-                key={monthObj[month][0].id}
-                id={monthObj[month].id}
-              />
-            );
-          })
+          Object.keys(monthObj)
+            .sort((a, b) => monthNamesArr.indexOf(a) - monthNamesArr.indexOf(b))
+            .map((month) => {
+              return (
+                <MonthBlock
+                  monthObj={monthObj[month]}
+                  month={month}
+                  key={monthObj[month][0].id}
+                  id={monthObj[month].id}
+                />
+              );
+            })
         )}
         {}
       </div>
