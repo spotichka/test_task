@@ -89,21 +89,23 @@ const MonthBlock = ({ monthObj, month }) => {
 
     return `${day} ${monthNamesArr[monthIndex]} ${year}`;
   }
-
+  console.log(monthObj);
   return (
     <div className="month_card">
       <div className="month_name">{month}</div>
       <ul>
-        {Object.keys(monthObj).map((item) => {
-          return (
-            <li key={monthObj[item].id}>{`${monthObj[item].lastName} ${
-              monthObj[item].firstName
-            } - ${formatDate(
-              new Date(monthObj[item].dob),
-              monthNamesArr
-            )}`}</li>
-          );
-        })}
+        {Object.keys(monthObj)
+          .sort((a, b) => new Date(monthObj[a].dob) - new Date(monthObj[b].dob))
+          .map((item) => {
+            return (
+              <li key={monthObj[item].id}>{`${monthObj[item].lastName} ${
+                monthObj[item].firstName
+              } - ${formatDate(
+                new Date(monthObj[item].dob),
+                monthNamesArr
+              )}`}</li>
+            );
+          })}
       </ul>
     </div>
   );
