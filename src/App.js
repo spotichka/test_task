@@ -1,7 +1,6 @@
 import "./App.css";
 import { HashRouter, Link, Route } from "react-router-dom";
 import Employess from "./Employees/Employees";
-import EmployessBirth from "./Employees/EmployessBirth";
 
 function App() {
   return (
@@ -16,7 +15,6 @@ function App() {
           <div className="container">
             <div className="employess_page">
               <Employess />
-              <EmployessBirth />
             </div>
           </div>
         </Route>

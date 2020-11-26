@@ -29,9 +29,7 @@ const EmployessBirth = ({ employees, selectedEmployees }) => {
 
   function formatMonth(date, monthNamesArr) {
     let month = new Date(date);
-
     let monthIndex = month.getMonth();
-
     return monthNamesArr[monthIndex];
   }
 
@@ -56,16 +54,14 @@ const EmployessBirth = ({ employees, selectedEmployees }) => {
         ) : (
           Object.keys(monthObj)
             .sort((a, b) => monthNamesArr.indexOf(a) - monthNamesArr.indexOf(b))
-            .map((month) => {
-              return (
-                <MonthBlock
-                  monthObj={monthObj[month]}
-                  month={month}
-                  key={monthObj[month][0].id}
-                  id={monthObj[month].id}
-                />
-              );
-            })
+            .map((month) => (
+              <MonthBlock
+                monthObj={monthObj[month]}
+                month={month}
+                key={monthObj[month][0].id}
+                id={monthObj[month].id}
+              />
+            ))
         )}
         {}
       </div>
@@ -73,12 +69,7 @@ const EmployessBirth = ({ employees, selectedEmployees }) => {
   );
 };
 
-let mapStateToProps = (state) => ({
-  selectedEmployees: state.selectedEmployees,
-  employees: state.employees,
-});
-
-export default connect(mapStateToProps)(EmployessBirth);
+export default EmployessBirth;
 
 const MonthBlock = ({ monthObj, month }) => {
   function formatDate(date) {
@@ -88,23 +79,20 @@ const MonthBlock = ({ monthObj, month }) => {
 
     return `${day} ${monthNamesArr[monthIndex]} ${year}`;
   }
-  console.log(monthObj);
   return (
     <div className="month_card">
       <div className="month_name">{month}</div>
       <ul>
         {Object.keys(monthObj)
           .sort((a, b) => new Date(monthObj[a].dob) - new Date(monthObj[b].dob))
-          .map((item) => {
-            return (
-              <li key={monthObj[item].id}>{`${monthObj[item].lastName} ${
-                monthObj[item].firstName
-              } - ${formatDate(
-                new Date(monthObj[item].dob),
-                monthNamesArr
-              )}`}</li>
-            );
-          })}
+          .map((item) => (
+            <li key={monthObj[item].id}>{`${monthObj[item].lastName} ${
+              monthObj[item].firstName
+            } - ${formatDate(
+              new Date(monthObj[item].dob),
+              monthNamesArr
+            )}`}</li>
+          ))}
       </ul>
     </div>
   );
